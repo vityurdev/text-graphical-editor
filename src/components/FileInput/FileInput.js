@@ -54,8 +54,10 @@ class FileInput extends React.Component {
         for (let step of drawingSteps) {        
           lineCount += 1;
 
-          const type = step[0];
-          const params = step.substr(2).split(' ')
+          const trimmedStep = step.trim(); // remove possible space and next line symbols
+
+          const type = trimmedStep[0];
+          const params = trimmedStep.substr(2).split(' ')
             .map(e => Number.isInteger(+e) ? +e : e);
 
           switch (type) {
